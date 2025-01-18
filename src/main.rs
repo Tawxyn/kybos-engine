@@ -28,3 +28,6 @@ fn matrix_times_vector(m: &Matrix, v: &Vector) -> Vector {
         x * mx[3] + y * my[3] + z * mz[3] + w * mw[3],
     ])
 }
+
+const SCREEN_WIDTH: usize = 80;
+const SCREEN_HEIGHT: usize = 40;
