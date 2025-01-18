@@ -31,3 +31,7 @@ fn matrix_times_vector(m: &Matrix, v: &Vector) -> Vector {
 
 const SCREEN_WIDTH: usize = 80;
 const SCREEN_HEIGHT: usize = 40;
+const OFFSET_X: f32 = SCREEN_WIDTH as f32 * 0.5;
+const OFFSET_Y: f32 = SCREEN_HEIGHT as f32 * 0.5;
+const SCALE_X: f32 = SCREEN_WIDTH as f32 * 0.5;
+const SCALE_Y: f32 = SCREEN_HEIGHT as f32 * 0.5;
