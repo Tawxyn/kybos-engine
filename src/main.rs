@@ -1,5 +1,3 @@
-fn main() {}
-
 #[derive(Debug, Clone, Copy)]
 struct Matrix([[f32; 4]; 4]);
 
@@ -35,3 +33,12 @@ const OFFSET_X: f32 = SCREEN_WIDTH as f32 * 0.5;
 const OFFSET_Y: f32 = SCREEN_HEIGHT as f32 * 0.5;
 const SCALE_X: f32 = SCREEN_WIDTH as f32 * 0.5;
 const SCALE_Y: f32 = SCREEN_HEIGHT as f32 * 0.5;
+
+fn main() {
+    for frame_number in 0..{
+        let mut frame: = [[b' ';SCREEN_WIDTH]; SCREEN_HEIGHT];
+
+        let t: = frame_number as f32 * 0.01;
+        let (c,s) = (t.cos(), t.sin());
+    }
+} 
