@@ -38,9 +38,6 @@ fn matrix_transformation() {
     ];
 }
 
-fn perspective_projection_matrix() {
-
-}
 
 fn transform_vector(vector: Vector, matrix: [[f32; 4]; 4]) -> Vector {
    let x = vector.0[0];
@@ -51,12 +48,33 @@ fn transform_vector(vector: Vector, matrix: [[f32; 4]; 4]) -> Vector {
    Vector([0.0; 4])
 }
 
+fn perspective_matrix(fov_degrees: f32, aspect_ratio: f32, 
+                                 near: f32, far: f32) -> [[f32; 4]; 4] {
+   
+   // Convert degrees to radians for FOV
+   let fov_radians = fov_degrees * std::f32::consts::PI / 180.0;
+   // Calulate focal point
+   let focal_point = 1.0 / f32::tan(fov_radians / 2.0);
+   
+   // Return perspective matrix
+   [
+      [focal_point / aspect_ratio, 0.0, 0.0 ,0.0],
+      [0.0, focal_point, 0.0 ,0.0],
+      [0.0, 0.0, (far + near) / (near - far), (2.0 * far * near) / (near - far)],
+      [0.0, 0.0, -1.0 ,0.0],
+
+
+   ]
+}
+
 // Resolution of terminal
-const SCREEN_WIDTH: i32 = 30;
-const SCREEN_HEIGHT: i32 = 120;
+const SCREEN_WIDTH: f32 = 30.0;
+const SCREEN_HEIGHT: f32 = 120.0;
+const ASPECT_RATIO: f32 = SCREEN_WIDTH / SCREEN_HEIGHT;
 // Far and near values (determine depth of object in scene)
-const FAR: i32 = 100;
-const NEAR: i32 = 1;
+const FAR: f32 = 100.0;
+const NEAR: f32 = 1.0;
+const FOV: f32 = 90.0;
 
 fn main() {
 
