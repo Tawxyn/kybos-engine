@@ -38,8 +38,26 @@ fn matrix_transformation() {
     ];
 }
 
-// Resolution
+fn perspective_projection_matrix() {
+
+}
+
+fn transform_vector(vector: Vector, matrix: [[f32; 4]; 4]) -> Vector {
+   let x = vector.0[0];
+   let y = vector.0[1];
+   let z = vector.0[2];
+   let w = vector.0[3];
+
+   Vector([0.0; 4])
+}
+
+// Resolution of terminal
 const SCREEN_WIDTH: i32 = 30;
 const SCREEN_HEIGHT: i32 = 120;
+// Far and near values (determine depth of object in scene)
+const FAR: i32 = 100;
+const NEAR: i32 = 1;
 
-fn main() {}
+fn main() {
+
+}
