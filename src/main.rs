@@ -49,7 +49,7 @@ fn transform_vector(vector: Vector, matrix: [[f32; 4]; 4]) -> Vector {
 }
 
 fn perspective_matrix(fov_degrees: f32, aspect_ratio: f32, 
-                                 near: f32, far: f32) -> [[f32; 4]; 4] {
+                        near: f32, far: f32) -> [[f32; 4]; 4] {
    
    // Convert degrees to radians for FOV
    let fov_radians = fov_degrees * std::f32::consts::PI / 180.0;
@@ -62,8 +62,6 @@ fn perspective_matrix(fov_degrees: f32, aspect_ratio: f32,
       [0.0, focal_point, 0.0 ,0.0],
       [0.0, 0.0, (far + near) / (near - far), (2.0 * far * near) / (near - far)],
       [0.0, 0.0, -1.0 ,0.0],
-
-
    ]
 }
 
@@ -77,5 +75,12 @@ const NEAR: f32 = 1.0;
 const FOV: f32 = 90.0;
 
 fn main() {
+   let perspective = perspective_matrix(FOV, ASPECT_RATIO, NEAR, FAR);
 
+   // For loop to run all verticies through transformation (perspective * vectors)
+   for vector in VERTICIES.iter() {
+      let transformed_vector = transform_vector(*vector, perspective);
+      println!("{:?}", transformed_vector);
+   }
 }
+ 
