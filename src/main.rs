@@ -29,6 +29,7 @@ const VERTICIES: [Vector; 8] = [
     Vector([1.0, -1.0, 1.0, 1.0]),   // H
 ];
 
+/* 
 fn matrix_transformation() {
     let mut view_matrix: [[f32; 4]; 4] = [
         [1.0, 0.0, 0.0, 0.0],
@@ -37,15 +38,21 @@ fn matrix_transformation() {
         [0.0, 0.0, 0.0, 1.0],
     ];
 }
+*/
 
 
 fn transform_vector(vector: Vector, matrix: [[f32; 4]; 4]) -> Vector {
-   let x = vector.0[0];
-   let y = vector.0[1];
-   let z = vector.0[2];
-   let w = vector.0[3];
 
-   Vector([0.0; 4])
+   let mut result = [0.0; 4];
+
+   for row in 0..4 {}
+
+   let x = vector.0[0] * matrix[0][0];
+   let y = vector.0[1] * matrix[0][1];
+   let z = vector.0[2] * matrix[0][2];
+   let w = vector.0[3] * matrix[0][3];
+
+   Vector([x, y, z, w])
 }
 
 fn perspective_matrix(fov_degrees: f32, aspect_ratio: f32, 
