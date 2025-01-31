@@ -59,14 +59,14 @@ fn perspective_matrix(fov_degrees: f32, aspect_ratio: f32,
                         near: f32, far: f32) -> [[f32; 4]; 4] {
    
    // Convert degrees to radians for FOV
-   let fov_radians = fov_degrees * std::f32::consts::PI / 180.0;
+   let fov_radians = fov_degrees.to_radians();
    // Calulate focal point
-   let focal_point = 1.0 / f32::tan(fov_radians / 2.0);
+   let f = 1.0 / f32::tan(fov_radians / 2.0);
    
    // Return perspective matrix
    [
-      [focal_point / aspect_ratio, 0.0, 0.0 ,0.0],
-      [0.0, focal_point, 0.0 ,0.0],
+      [f / aspect_ratio, 0.0, 0.0 ,0.0],
+      [0.0, f, 0.0 ,0.0],
       [0.0, 0.0, (far + near) / (near - far), (2.0 * far * near) / (near - far)],
       [0.0, 0.0, -1.0 ,0.0],
    ]
