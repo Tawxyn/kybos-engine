@@ -72,6 +72,12 @@ fn homogeneous_divide(vector: Vector) -> [f32; 3] {
    result
 }
 
+fn map_to_screen(ndc: [f32; 3]) -> (usize, usize) {
+   let x_screen = ((ndc[0] + 1.0) * 0.5 * SCREEN_WIDTH) as usize;
+   let y_screen = ((1.0 - ndc[1]) * 0.5 * SCREEN_HEIGHT) as usize;
+   (x_screen, y_screen)
+}
+
 // Resolution of terminal
 const SCREEN_WIDTH: f32 = 120.0;
 const SCREEN_HEIGHT: f32 = 30.0;
