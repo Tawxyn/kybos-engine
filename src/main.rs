@@ -30,6 +30,12 @@ const VERTICIES: [Vector; 8] = [
     Vector([1.0, -1.0, 1.0, 1.0]),   // H
 ];
 
+const EDGES: [(usize, usize); 12] = [
+    (0, 1), (1, 3), (3, 2), (2, 0), // Top face (A-B-D-C)
+    (4, 5), (5, 7), (7, 6), (6, 4), // Bottom face (E-F-H-G)
+    (0, 4), (1, 5), (2, 6), (3, 7), // Vertical edges (A-E, B-F, C-G, D-H)
+];
+
 fn transform_vector(vector: Vector, matrix: [[f32; 4]; 4]) -> Vector {
 
    let mut result = [0.0; 4];
@@ -89,7 +95,7 @@ const ASPECT_RATIO: f32 = SCREEN_WIDTH / SCREEN_HEIGHT;
 // Far and near values (determine depth of object in scene)
 const FAR: f32 = 100.0;
 const NEAR: f32 = 1.0;
-const FOV: f32 = 60.0;
+const FOV: f32 = 90.0;
 
 fn main() {
    let perspective = perspective_matrix(FOV, ASPECT_RATIO, NEAR, FAR);
