@@ -72,6 +72,18 @@ fn perspective_matrix(fov_degrees: f32, aspect_ratio: f32,
    ]
 }
 
+fn homogeneous_divide(vector: Vector) -> [f32; 3] {
+
+   let mut result = [0.0; 3];
+
+   result[0] = vector.0[0] / vector.0[3];  // x / w
+   result[1] = vector.0[1] / vector.0[3];  // y / w
+   result[2] = vector.0[2] / vector.0[3];  // z / w
+   
+
+  result
+}
+
 // Resolution of terminal
 const SCREEN_WIDTH: f32 = 30.0;
 const SCREEN_HEIGHT: f32 = 120.0;
@@ -87,7 +99,9 @@ fn main() {
    // For loop to run all verticies through transformation (perspective * vectors)
    for vector in VERTICIES.iter() {
       let transformed_vector = transform_vector(*vector, perspective);
+      let testing_vector = homogeneous_divide(transform_vector(*vector, perspective));
       println!("{:?}", transformed_vector);
+      println!("{:?}", testing_vector);
    }
 }
  
