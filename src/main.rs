@@ -80,8 +80,7 @@ fn homogeneous_divide(vector: Vector) -> [f32; 3] {
    result[1] = vector.0[1] / vector.0[3];  // y / w
    result[2] = vector.0[2] / vector.0[3];  // z / w
    
-
-  result
+   result
 }
 
 // Resolution of terminal
@@ -98,10 +97,8 @@ fn main() {
 
    // For loop to run all verticies through transformation (perspective * vectors)
    for vector in VERTICIES.iter() {
-      let transformed_vector = transform_vector(*vector, perspective);
-      let testing_vector = homogeneous_divide(transform_vector(*vector, perspective));
+      let transformed_vector = homogeneous_divide(transform_vector(*vector, perspective));
       println!("{:?}", transformed_vector);
-      println!("{:?}", testing_vector);
    }
 }
  
