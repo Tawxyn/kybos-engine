@@ -73,8 +73,8 @@ fn homogeneous_divide(vector: Vector) -> [f32; 3] {
 }
 
 // Resolution of terminal
-const SCREEN_WIDTH: f32 = 30.0;
-const SCREEN_HEIGHT: f32 = 120.0;
+const SCREEN_WIDTH: f32 = 120.0;
+const SCREEN_HEIGHT: f32 = 30.0;
 const ASPECT_RATIO: f32 = SCREEN_WIDTH / SCREEN_HEIGHT;
 // Far and near values (determine depth of object in scene)
 const FAR: f32 = 100.0;
