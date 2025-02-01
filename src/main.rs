@@ -78,6 +78,10 @@ fn map_to_screen(ndc: [f32; 3]) -> (usize, usize) {
    (x_screen, y_screen)
 }
 
+fn translate_vector(vector: Vector, z_offset: f32) -> Vector {
+   Vector([vector.0[0], vector.0[1], vector.0[2] - z_offset, vector.0[3]])
+}
+
 // Resolution of terminal
 const SCREEN_WIDTH: f32 = 120.0;
 const SCREEN_HEIGHT: f32 = 30.0;
@@ -85,15 +89,36 @@ const ASPECT_RATIO: f32 = SCREEN_WIDTH / SCREEN_HEIGHT;
 // Far and near values (determine depth of object in scene)
 const FAR: f32 = 100.0;
 const NEAR: f32 = 1.0;
-const FOV: f32 = 90.0;
+const FOV: f32 = 60.0;
 
 fn main() {
    let perspective = perspective_matrix(FOV, ASPECT_RATIO, NEAR, FAR);
+   
+   // Create an empty screen buffer filled with spaces
+   let mut screen = vec![vec![' '; SCREEN_WIDTH as usize]; SCREEN_HEIGHT as usize];
 
    // For loop to run all verticies through transformation (perspective * vectors)
    for vector in VERTICIES.iter() {
-      let transformed_vector = homogeneous_divide(transform_vector(*vector, perspective));
-      println!("{:?}", transformed_vector);
-   }
+      let translated_vector = translate_vector(*vector, 3.0);  // Move cube back
+      let transformed_vector = homogeneous_divide(transform_vector(translated_vector, perspective));
+
+      // Clip points outside NDC
+      if transformed_vector[0] >= -1.0 && transformed_vector[0] <= 1.0 &&
+         transformed_vector[1] >= -1.0 && transformed_vector[1] <= 1.0 &&
+         transformed_vector[2] >= -1.0 && transformed_vector[2] <= 1.0 {
+          
+          let (x_screen, y_screen) = map_to_screen(transformed_vector);
+
+          if x_screen < SCREEN_WIDTH as usize && y_screen < SCREEN_HEIGHT as usize {
+              screen[y_screen][x_screen] = 'o';
+          }
+      }
+  }
+
+   // Print the screen buffer
+   for row in screen {
+      let line: String = row.into_iter().collect();
+      println!("{}", line);
+  }
 }
  
