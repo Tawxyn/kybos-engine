@@ -15,17 +15,6 @@
 
 */
 
-/* 
-fn matrix_transformation() {
-    let mut view_matrix: [[f32; 4]; 4] = [
-        [1.0, 0.0, 0.0, 0.0],
-        [0.0, 1.0, 0.0, 0.0],
-        [0.0, 0.0, 1.0, 0.0],
-        [0.0, 0.0, 0.0, 1.0],
-    ];
-}
-*/
-
 
 #[derive(Debug, Clone, Copy)]
 struct Vector([f32; 4]);
