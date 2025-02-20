@@ -14,7 +14,7 @@ Clone the repository:
 
 ```sh
 git clone <github.com/Tawxyn/kybos-engine>
-cd <repository-name>
+cd <kybos-engine>
 ```
 
 ## Usage
