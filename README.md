@@ -1,6 +1,6 @@
 # 3D Terminal Renderer
 
-This project renders a 3D cube in a 2D terminal using ASCII characters. It utilizes perspective projection to transform 3D points onto a 2D screen.
+This project renders a 3D cube in a 2D terminal using ASCII characters. It utilizes perspective projection to transform 3D points onto a 2D screen. The cube is drawn by calculating the positions of its vertices in 3D space and then projecting those points onto a 2D plane, simulating depth and perspective.
 
 ## Features
 
